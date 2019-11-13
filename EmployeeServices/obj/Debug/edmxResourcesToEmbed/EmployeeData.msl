@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EmployeeDBContextStoreContainer" CdmEntityContainer="EF_Demo_DBEntities">
+  <EntityContainerMapping StorageEntityContainer="WEBAPIModel1StoreContainer" CdmEntityContainer="WEBAPIEntities">
     <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="EmployeeDBContext.Employee">
+      <EntityTypeMapping TypeName="WEBAPIModel1.Employee">
         <MappingFragment StoreEntitySet="Employees">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />

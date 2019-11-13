@@ -27,14 +27,41 @@ namespace EmployeeServices.Controllers
         //}
 
 
-        public IEnumerable<string> Get()
+        //public IEnumerable<string> Get()
+        //{
+        //    IList<string> formatters = new List<string>();
+        //    foreach(var item in GlobalConfiguration.Configuration.Formatters)
+        //    {
+        //        formatters.Add(item.ToString());
+        //    }
+        //    return formatters.AsEnumerable<string>();
+        //}
+
+        public HttpResponseMessage Get()
         {
-            IList<string> formatters = new List<string>();
-            foreach(var item in GlobalConfiguration.Configuration.Formatters)
+            using (EF_Demo_DBEntities dBContext = new EF_Demo_DBEntities())
             {
-                formatters.Add(item.ToString());
+                var Employees = dBContext.Employees.ToList();
+                return Request.CreateResponse(HttpStatusCode.OK, Employees);
             }
-            return formatters.AsEnumerable<string>();
         }
+
+        public HttpResponseMessage Get(int id)
+        {
+            using (EF_Demo_DBEntities dBContext = new EF_Demo_DBEntities())
+            {
+                var entity = dBContext.Employees.FirstOrDefault(d => d.ID == id);
+                if(entity!=null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Employee with ID :" + id.ToString() + "is not found");
+                }
+            }
+        }
+
+
     }
 }

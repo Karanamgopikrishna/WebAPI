@@ -13,10 +13,10 @@ namespace EmployeeServices.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EmployeeDBContext : DbContext
+    public partial class EF_Demo_DBEntities : DbContext
     {
-        public EmployeeDBContext()
-            : base("name=EmployeeDBContext")
+        public EF_Demo_DBEntities()
+            : base("name=EF_Demo_DBEntities")
         {
         }
     
