@@ -26,6 +26,7 @@ namespace EmployeeServices.Controllers
         //    }
         //}
 
+        //----------------------------------------------------------------------------------------//
 
         //public IEnumerable<string> Get()
         //{
@@ -37,30 +38,112 @@ namespace EmployeeServices.Controllers
         //    return formatters.AsEnumerable<string>();
         //}
 
-        public HttpResponseMessage Get()
-        {
-            using (EF_Demo_DBEntities dBContext = new EF_Demo_DBEntities())
-            {
-                var Employees = dBContext.Employees.ToList();
-                return Request.CreateResponse(HttpStatusCode.OK, Employees);
-            }
-        }
 
-        public HttpResponseMessage Get(int id)
-        {
-            using (EF_Demo_DBEntities dBContext = new EF_Demo_DBEntities())
-            {
-                var entity = dBContext.Employees.FirstOrDefault(d => d.ID == id);
-                if(entity!=null)
-                {
-                    return Request.CreateResponse(HttpStatusCode.OK, entity);
-                }
-                else
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Employee with ID :" + id.ToString() + "is not found");
-                }
-            }
-        }
+        //Methods with GET()
+        //public HttpResponseMessage Get()
+        //{
+        //    using (EF_Demo_DBEntities dBContext = new EF_Demo_DBEntities())
+        //    {
+        //        var Employees = dBContext.Employees.ToList();
+        //        return Request.CreateResponse(HttpStatusCode.OK, Employees);
+        //    }
+        //}
+
+        //----------------------------------------------------------------------------------------//
+
+
+
+
+        //Methods with [HttpGET] attribute
+        //public HttpResponseMessage LoadEmployees()
+        //{
+        //    using (EF_Demo_DBEntities dBContext = new EF_Demo_DBEntities())
+        //    {
+        //        var Employees = dBContext.Employees.ToList();
+        //        return Request.CreateResponse(HttpStatusCode.OK, Employees);
+        //    }
+        //}
+
+
+
+
+        //Methods with Get(paramaeter)
+        //public HttpResponseMessage Get(int id)
+        //{
+        //    using (EF_Demo_DBEntities dBContext = new EF_Demo_DBEntities())
+        //    {
+        //        var entity = dBContext.Employees.FirstOrDefault(d => d.ID == id);
+        //        if(entity!=null)
+        //        {
+        //            return Request.CreateResponse(HttpStatusCode.OK, entity);
+        //        }
+        //        else
+        //        {
+        //            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Employee with ID :" + id.ToString() + "is not found");
+        //        }
+        //    }
+        //}
+
+
+
+           //-----Methods with parameters [HttpGet] attribute---------//
+        //public HttpResponseMessage LoadEmployeeByID(int id)
+        //{
+        //    using (EF_Demo_DBEntities dBContext = new EF_Demo_DBEntities())
+        //    {
+        //        var entity = dBContext.Employees.FirstOrDefault(d => d.ID == id);
+        //        if (entity != null)
+        //        {
+        //            return Request.CreateResponse(HttpStatusCode.OK, entity);
+        //        }
+        //        else
+        //        {
+        //            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Employee with ID :" + id.ToString() + "is not found");
+        //        }
+        //    }
+        //}
+
+
+        //----------------------------------------------------------------------------------------//
+
+
+
+        //Implementing multiple GET,PUT,POST,DELETE methods with in single controller for below two methods
+        //[HttpGet]
+        //public HttpResponseMessage LoadAllEmployees()
+        //{
+        //    using (EF_Demo_DBEntities dBEntities = new EF_Demo_DBEntities())
+        //    {
+        //        var Employees = dBEntities.Employees.ToList();
+        //        return Request.CreateResponse(HttpStatusCode.OK, Employees);
+        //    }
+        //}
+
+        //[HttpGet]
+        //public HttpResponseMessage LoadAllMaleEmployees()
+        //{
+        //    using (EF_Demo_DBEntities dBEntities = new EF_Demo_DBEntities())
+        //    {
+        //        var Employees = dBEntities.Employees.Where(m => m.Gender == "Male").ToList();
+        //        return Request.CreateResponse(HttpStatusCode.OK, Employees);
+        //    }
+        //}
+
+        //[HttpGet]
+        //public HttpResponseMessage LoadAllFemaleEmployees()
+        //{
+        //    using (EF_Demo_DBEntities dBEntities = new EF_Demo_DBEntities())
+        //    {
+        //        var Employees = dBEntities.Employees.Where(f => f.Gender == "Female").ToList();
+        //        return Request.CreateResponse(HttpStatusCode.OK, Employees);
+        //    }
+        //}
+
+
+
+        //----------------------------------------------------------------------------------------//
+
+
 
 
         public HttpResponseMessage Post([FromBody] Employee employee)
